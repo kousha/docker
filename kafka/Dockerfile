@@ -11,6 +11,8 @@ ENV KAFKA_HOME /opt/kafka_$SCALA_VERSION-$KAFKA_VERSION
 
 WORKDIR $KAFKA_HOME
 
+RUN sed -i 's/zookeeper.connect=localhost:2181/zookeeper.connect=zookeeper:2181/' $KAFKA_HOME/config/server.properties
+
 VOLUME /tmp/kafka-logs
 VOLUME $KAFKA_HOME
 
