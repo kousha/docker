@@ -22,4 +22,5 @@ VOLUME $KAFKA_HOME
 
 EXPOSE 9092
 
-ENTRYPOINT ["bin/kafka-config-start.sh"]
+ENTRYPOINT [ "bin/kafka-config-start.sh" ]
+CMD [ "bin/kafka-server-start.sh", "config/server.properties" ]
