@@ -13,6 +13,8 @@ sed -i "s/#advertised.host.name.*/advertised.host.name=${hostname}/" "${server_p
 
 sed -i "s/broker.id=0/broker.id=$(hostname_hash ${hostname})/" "${server_properties}"
 
-echo "auto.leader.rebalance.enable=true" >> "${server_properties}"
+if ! grep -q "auto.leader.rebalance.enable=true" "${server_properties}"; then
+  echo "auto.leader.rebalance.enable=true" >> "${server_properties}"
+fi
 
 exec "$@"
