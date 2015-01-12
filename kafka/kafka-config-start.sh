@@ -17,4 +17,12 @@ if ! grep -q "auto.leader.rebalance.enable=true" "${server_properties}"; then
   echo "auto.leader.rebalance.enable=true" >> "${server_properties}"
 fi
 
+if ! grep -q "delete.topic.enable=true" "${server_properties}"; then
+  echo "delete.topic.enable=true" >> "${server_properties}"
+fi
+
+if ! [[ -z "${ZOOKEEPERS}" ]] ; then
+  sed -i "s/zookeeper.connect=zookeeper:2181/zookeeper.connect=${ZOOKEEPERS}/" "${server_properties}"
+fi
+
 exec "$@"
