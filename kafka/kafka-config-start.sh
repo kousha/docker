@@ -25,4 +25,5 @@ if ! [[ -z "${ZOOKEEPERS}" ]] ; then
   sed -i "s/zookeeper.connect=zookeeper:2181/zookeeper.connect=${ZOOKEEPERS}/" "${server_properties}"
 fi
 
+export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=${JMX_PORT} "
 exec "$@"

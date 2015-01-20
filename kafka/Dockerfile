@@ -3,7 +3,6 @@ MAINTAINER Kousha Najafi <kousha@lazyhack.com>
 
 ENV SCALA_VERSION 2.10
 ENV KAFKA_VERSION 0.8.2-beta
-ENV JMX_PORT 9090
 
 RUN apt-get update && apt-get install -y openjdk-7-jre-headless wget
 
@@ -22,6 +21,8 @@ VOLUME /tmp/kafka-logs
 VOLUME $KAFKA_HOME
 
 EXPOSE 9092
+
+ENV JMX_PORT 9090
 EXPOSE $JMX_PORT
 
 ENTRYPOINT [ "bin/kafka-config-start.sh" ]
