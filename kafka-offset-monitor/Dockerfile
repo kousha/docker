@@ -8,7 +8,7 @@ RUN mkdir -p /opt/kom
 RUN curl --silent -L -o /opt/kom/KafkaOffsetMonitor.jar https://github.com/quantifind/KafkaOffsetMonitor/releases/download/v0.2.0/KafkaOffsetMonitor-assembly-0.2.0.jar
 
 ENV ZOOKEEPERS zookeeper:2181
-ENV KOM_REFRESH 5.minutes
+ENV KOM_REFRESH 1.minutes
 ENV KOM_RETENTION 2.days
 ENV PORT 80
 
