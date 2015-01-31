@@ -1,8 +1,8 @@
 {
    "servers":[
       {
-         "port":"kafka",
-         "host":"9090",
+         "port":"9090",
+         "host":"localhost",
          "queries":[
             {
                "outputWriters":[

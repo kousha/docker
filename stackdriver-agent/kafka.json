@@ -2,7 +2,7 @@
   "servers":[
     {
       "port": "9090",
-      "host": "kafka",
+      "host": "localhost",
       "queries":[
         {
           "obj": "\"kafka.log\":type=\"LogFlushStats\",name=\"LogFlushRateAndTimeMs\"",
