@@ -11,9 +11,19 @@ cd "${KAFKA_HOME}"
 
 sed -i "s/#advertised.host.name.*/advertised.host.name=${hostname}/" "${server_properties}"
 
-sed -i "s/broker.id=0/broker.id=$(hostname_hash ${hostname})/" "${server_properties}"
+sed -i "s/broker.id=0/broker.id=${KAFKA_BROKER_ID:-$(hostname_hash ${hostname})}/" "${server_properties}"
 
 sed -i -e "s/log.retention.check.interval.ms=300000/log.retention.check.interval.ms=60000/" "${server_properties}"
+
+sed -i -e "s/num.recovery.threads.per.data.dir=1/num.recovery.threads.per.data.dir=4/" "${server_properties}"
+
+if [[ -n "${KAFKA_LOG_RETENTION_HOURS}" ]] ; then
+  sed -i -e "s/log.retention.hours=168/log.retention.hours=${KAFKA_LOG_RETENTION_HOURS}/" "${server_properties}"
+fi
+
+if [[ -n "${ZOOKEEPERS}" ]] ; then
+  sed -i "s/zookeeper.connect=zookeeper:2181/zookeeper.connect=${ZOOKEEPERS}/" "${server_properties}"
+fi
 
 if ! grep -q "auto.leader.rebalance.enable=true" "${server_properties}"; then
   echo "auto.leader.rebalance.enable=true" >> "${server_properties}"
@@ -21,10 +31,6 @@ fi
 
 if ! grep -q "delete.topic.enable=true" "${server_properties}"; then
   echo "delete.topic.enable=true" >> "${server_properties}"
-fi
-
-if ! [[ -z "${ZOOKEEPERS}" ]] ; then
-  sed -i "s/zookeeper.connect=zookeeper:2181/zookeeper.connect=${ZOOKEEPERS}/" "${server_properties}"
 fi
 
 export KAFKA_JMX_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=${JMX_PORT} "
