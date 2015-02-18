@@ -2,7 +2,7 @@ FROM debian:stable
 MAINTAINER Kousha Najafi <kousha@lazyhack.com>
 
 ENV SCALA_VERSION 2.10
-ENV KAFKA_VERSION 0.8.2-beta
+ENV KAFKA_VERSION 0.8.2.0
 
 RUN apt-get update && apt-get install -y openjdk-7-jre-headless wget
 
