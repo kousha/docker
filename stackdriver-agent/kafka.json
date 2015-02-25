@@ -5,21 +5,7 @@
       "host": "localhost",
       "queries":[
         {
-          "obj": "\"kafka.log\":type=\"LogFlushStats\",name=\"LogFlushRateAndTimeMs\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.log.LogFlushStats.LogFlush",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsBytesInPerSec\"",
+          "obj": "kafka.server:type=BrokerTopicMetrics,name=BytesInPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.BrokerTopicMetrics.AllTopicsBytesIn",
           "outputWriters": [
@@ -33,7 +19,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsFailedFetchRequestsPerSec\"",
+          "obj": "kafka.server:type=BrokerTopicMetrics,name=FetchRequestsPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.BrokerTopicMetrics.AllTopicsFailedFetchRequests",
           "outputWriters": [
@@ -47,7 +33,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsFailedProduceRequestsPerSec\"",
+          "obj": "kafka.server:type=BrokerTopicMetrics,name=ProduceRequestsPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.BrokerTopicMetrics.AllTopicsFailedProduceRequests",
           "outputWriters": [
@@ -61,7 +47,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsMessagesInPerSec\"",
+          "obj": "kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.BrokerTopicMetrics.AllTopicsMessagesIn",
           "outputWriters": [
@@ -75,7 +61,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"BrokerTopicMetrics\",name=\"AllTopicsBytesOutPerSec\"",
+          "obj": "kafka.server:type=BrokerTopicMetrics,name=BytesOutPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.BrokerTopicMetrics.AllTopicsBytesOut",
           "outputWriters": [
@@ -89,7 +75,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaManager\",name=\"UnderReplicatedPartitions\"",
+          "obj": "kafka.server:type=ReplicaManager,name=UnderReplicatedPartitions",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ReplicaManager.UnderReplicatedPartitions",
           "outputWriters": [
@@ -103,7 +89,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaManager\",name=\"PartitionCount\"",
+          "obj": "kafka.server:type=ReplicaManager,name=PartitionCount",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ReplicaManager.PartitionCount",
           "outputWriters": [
@@ -117,7 +103,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaManager\",name=\"LeaderCount\"",
+          "obj": "kafka.server:type=ReplicaManager,name=LeaderCount",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ReplicaManager.LeaderCount",
           "outputWriters": [
@@ -131,7 +117,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaManager\",name=\"ISRShrinksPerSec\"",
+          "obj": "kafka.server:type=ReplicaManager,name=ISRShrinksPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.ReplicaManager.ISRShrinks",
           "outputWriters": [
@@ -145,7 +131,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaManager\",name=\"IsrExpandsPerSec\"",
+          "obj": "kafka.server:type=ReplicaManager,name=IsrExpandsPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.server.ReplicaManager.ISRExpands",
           "outputWriters": [
@@ -159,7 +145,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaFetcherManager\",name=\"Replica-MaxLag\"",
+          "obj": "kafka.server:type=ReplicaFetcherManager,name=MaxLag,clientId=Replica",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ReplicaFetcherManager.MaxLag",
           "outputWriters": [
@@ -173,7 +159,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ReplicaFetcherManager\",name=\"Replica-MinFetchRate\"",
+          "obj": "kafka.server:type=ReplicaFetcherManager,name=MinFetchRate,clientId=Replica",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ReplicaFetcherManager.MinFetchRate",
           "outputWriters": [
@@ -187,7 +173,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ProducerRequestPurgatory\",name=\"NumDelayedRequests\"",
+          "obj": "kafka.server:type=ProducerRequestPurgatory,name=NumDelayedRequests",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ProducerRequestPurgatory.NumDelayedRequests",
           "outputWriters": [
@@ -201,7 +187,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"ProducerRequestPurgatory\",name=\"PurgatorySize\"",
+          "obj": "kafka.server:type=ProducerRequestPurgatory,name=PurgatorySize",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.ProducerRequestPurgatory.PurgatorySize",
           "outputWriters": [
@@ -215,7 +201,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"FetchRequestPurgatory\",name=\"NumDelayedRequests\"",
+          "obj": "kafka.server:type=FetchRequestPurgatory,name=NumDelayedRequests",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.FetchRequestPurgatory.NumDelayedRequests",
           "outputWriters": [
@@ -229,7 +215,7 @@
           ]
         },
         {
-          "obj": "\"kafka.server\":type=\"FetchRequestPurgatory\",name=\"PurgatorySize\"",
+          "obj": "kafka.server:type=FetchRequestPurgatory,name=PurgatorySize",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.server.FetchRequestPurgatory.PurgatorySize",
           "outputWriters": [
@@ -243,7 +229,7 @@
           ]
         },
         {
-          "obj": "\"kafka.network\":type=\"RequestMetrics\",name=\"Produce-RequestsPerSec\"",
+          "obj": "kafka.network:type=RequestMetrics,name=RequestsPerSec,request=Produce",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.network.RequestMetrics.ProduceRequests",
           "outputWriters": [
@@ -257,7 +243,7 @@
           ]
         },
         {
-          "obj": "\"kafka.network\":type=\"RequestMetrics\",name=\"Fetch-Follower-RequestsPerSec\"",
+          "obj": "kafka.network:type=RequestMetrics,name=RequestsPerSec,request=FetchFollower",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.network.RequestMetrics.FetchFollowerRequests",
           "outputWriters": [
@@ -271,7 +257,7 @@
           ]
         },
         {
-          "obj": "\"kafka.network\":type=\"RequestMetrics\",name=\"Fetch-Consumer-RequestsPerSec\"",
+          "obj": "kafka.network:type=RequestMetrics,name=RequestsPerSec,request=FetchConsumer",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.network.RequestMetrics.FetchConsumerRequests",
           "outputWriters": [
@@ -285,7 +271,7 @@
           ]
         },
         {
-          "obj": "\"kafka.controller\":type=\"KafkaController\",name=\"ActiveControllerCount\"",
+          "obj": "kafka.controller:type=KafkaController,name=ActiveControllerCount",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.controller.KafkaController.ActiveControllerCount",
           "outputWriters": [
@@ -299,7 +285,7 @@
           ]
         },
         {
-          "obj": "\"kafka.controller\":type=\"KafkaController\",name=\"OfflinePartitionsCount\"",
+          "obj": "kafka.controller:type=KafkaController,name=OfflinePartitionsCount",
           "attr": [ "Value" ],
           "resultAlias": "sdkafka.controller.KafkaController.OfflinePartitionsCount",
           "outputWriters": [
@@ -313,7 +299,7 @@
           ]
         },
         {
-          "obj": "\"kafka.controller\":type=\"ControllerStats\",name=\"LeaderElectionRateAndTimeMs\"",
+          "obj": "kafka.controller:type=ControllerStats,name=LeaderElectionRateAndTimeMs",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.controller.ControllerStats.LeaderElection",
           "outputWriters": [
@@ -327,121 +313,9 @@
           ]
         },
         {
-          "obj": "\"kafka.controller\":type=\"ControllerStats\",name=\"UncleanLeaderElectionsPerSec\"",
+          "obj": "kafka.controller:type=ControllerStats,name=UncleanLeaderElectionsPerSec",
           "attr": [ "Count" ],
           "resultAlias": "sdkafka.controller.ControllerStats.UncleanLeaderElection",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.consumer\":type=\"ConsumerFetcherManager\",name=\"*-MaxLag\"",
-          "attr": [ "Value" ],
-          "resultAlias": "sdkafka.consumer.ConsumerFetcherManager.MaxLag",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.consumer\":type=\"ConsumerFetcherManager\",name=\"*-MinFetchRate\"",
-          "attr": [ "Value" ],
-          "resultAlias": "sdkafka.consumer.ConsumerFetcherManager.MinFetchRate",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.producer\":type=\"ProducerRequestsMetrics\",name=\"-AllBrokersProducerRequestSize\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.producer.ProducerRequestsMetrics.AllBrokersProducerRequestSize",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.producer\":type=\"ProducerRequestsMetrics\",name=\"-AllBrokersProducerRequestRateAndTimeMs\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.producer.ProducerRequestsMetrics.AllBrokersProducerRequestRate",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.producer\":type=\"ProducerStats\",name=\"-FailedSendsPerSec\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.producer.ProducerStats.FailedSendsPerSec",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.producer\":type=\"ProducerTopicMetrics\",name=\"-AllTopicsBytesPerSec\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.producer.ProducerTopicMetrics.AllTopicsBytes",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.producer\":type=\"ProducerTopicMetrics\",name=\"-AllTopicsDroppedMessagesPerSec\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.producer.ProducerTopicMetrics.AllTopicsDroppedMessages",
-          "outputWriters": [
-            {
-              "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
-              "settings": {
-                "token": "STACKDRIVER_API_KEY",
-                "detectInstance": "AWS"
-              }
-            }
-          ]
-        },
-        {
-          "obj": "\"kafka.producer\":type=\"ProducerTopicMetrics\",name=\"-AllTopicsMessagesPerSec\"",
-          "attr": [ "Count" ],
-          "resultAlias": "sdkafka.producer.ProducerTopicMetrics.AllTopicsMessages",
           "outputWriters": [
             {
               "@class": "com.googlecode.jmxtrans.model.output.StackdriverWriter",
