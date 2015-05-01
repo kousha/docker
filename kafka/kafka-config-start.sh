@@ -21,6 +21,14 @@ if [[ -n "${KAFKA_LOG_RETENTION_HOURS}" ]] ; then
   sed -i -e "s/log.retention.hours=168/log.retention.hours=${KAFKA_LOG_RETENTION_HOURS}/" "${server_properties}"
 fi
 
+if [[ -n "${KAFKA_LOG_RETENTION_BYTES}" ]] ; then
+  sed -i -e "s/.*log.retention.bytes=.*/log.retention.bytes=${KAFKA_LOG_RETENTION_BYTES}/" "${server_properties}"
+fi
+
+if [[ -n "${KAFKA_LOG_SEGMENT_BYTES}" ]] ; then
+  sed -i -e "s/.*log.segment.bytes=.*/log.segment.bytes=${KAFKA_LOG_SEGMENT_BYTES}/" "${server_properties}"
+fi
+
 if [[ -n "${ZOOKEEPERS}" ]] ; then
   sed -i "s/zookeeper.connect=zookeeper:2181/zookeeper.connect=${ZOOKEEPERS}/" "${server_properties}"
 fi
