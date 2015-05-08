@@ -5,7 +5,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl openjdk-7-
 
 RUN mkdir -p /opt/kom
 
-RUN curl --silent -L -o /opt/kom/KafkaOffsetMonitor.jar https://github.com/quantifind/KafkaOffsetMonitor/releases/download/v0.2.0/KafkaOffsetMonitor-assembly-0.2.0.jar
+ENV KOM_VERSION 0.2.1
+RUN curl --silent -L -o /opt/kom/KafkaOffsetMonitor.jar https://github.com/quantifind/KafkaOffsetMonitor/releases/download/v$KOM_VERSION/KafkaOffsetMonitor-assembly-$KOM_VERSION.jar
 
 ENV ZOOKEEPERS zookeeper:2181
 ENV KOM_REFRESH 1.minutes
