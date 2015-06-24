@@ -18,7 +18,6 @@ COPY kafka-config-start.sh $KAFKA_HOME/bin/
 RUN sed -i 's/zookeeper.connect=localhost:2181/zookeeper.connect=zookeeper:2181/' $KAFKA_HOME/config/server.properties
 
 VOLUME /tmp/kafka-logs
-VOLUME $KAFKA_HOME
 
 EXPOSE 9092
 
