@@ -1,9 +1,6 @@
 FROM debian:wheezy
 MAINTAINER Kousha Najafi <kousha@lazyhack.com>
 
-ENV SCALA_VERSION 2.10
-ENV KAFKA_VERSION 0.8.2-beta
-
 RUN apt-get update && apt-get install -y curl openjdk-7-jre-headless
 
 
@@ -18,6 +15,6 @@ RUN mkdir -p /mnt/jmxtrans/conf /mnt/jmxtrans/log
 RUN curl --silent -o /mnt/jmxtrans/jmxtrans-all.jar https://s3.amazonaws.com/stackrpms/jmxtrans/jmxtrans-all.jar
 
 COPY *.json /mnt/jmxtrans/conf/
-COPY zookeeper.conf /opt/stackdriver/collectd/etc/collectd.d/zookeeper.conf
+COPY *.conf /opt/stackdriver/collectd/etc/collectd.d/
 
 CMD [ "/opt/stackdriver/start-wait-stackdriver-agent.sh" ]
